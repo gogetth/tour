@@ -14,6 +14,7 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
       - run: gcloud info
+
       # - name: Initialize Google Cloud SDK
       #   uses: zxyle/publish-gae-action@master
       #   with:
