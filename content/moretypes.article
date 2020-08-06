@@ -1,133 +1,126 @@
-More types: structs, slices, and maps.
-Learn how to define types based on existing ones: this lesson covers structs, arrays, slices, and maps.
+ชนิดของตัวแปรที่มากขึ้น: structs, slices, และ maps
+เรียนรู้การประการชนิดของตัวแปรที่อ้างถึงตัวแปรที่มีอยู่แล้ว: ในบทเรียนนี้จะครอบคลุมถึง structs, arrays, slices, และ maps
 
 The Go Authors
 https://golang.org
 
 * Pointers
 
-Go has pointers.
-A pointer holds the memory address of a value.
+ภาษาโกมีพอยเตอร์
+พอยเตอร์หรือตัวชี้ จะเก็บที่อยู่ในหน่วยความจำของค่าใดก็ตามไว้
 
-The type `*T` is a pointer to a `T` value. Its zero value is `nil`.
+ชนิดของตัวแปร `*T` ก็คือพอยเตอร์ที่ชี้ไปที่ค่าของ `T` และค่าว่างของมันคือ `nil`
 
 	var p *int
 
-The `&` operator generates a pointer to its operand.
+เครื่องหมาย `&` จะมอบพอยเตอร์ของค่าที่มันอยู่ด้วย ให้กับอะไรก็ตามที่จะมารับค่านั้นไป
 
 	i := 42
 	p = &i
 
-The `*` operator denotes the pointer's underlying value.
+เครื่องหมาย `*` คือการชี้ลงไปที่ค่าที่อยู่ภายใต้พอยเตอร์นั้น
 
-	fmt.Println(*p) // read i through the pointer p
-	*p = 21         // set i through the pointer p
+	fmt.Println(*p) // อ่านค่า i ที่อยู่ในพอยเตอร์ p
+	*p = 21         // กำหนดค่าให้ i ที่อยู่ในพอยเตอร์ p
 
-This is known as "dereferencing" or "indirecting".
 
-Unlike C, Go has no pointer arithmetic.
+สิ่งนี้รู้จักกันในชื่อ "dereferencing" หรือ "indirecting"
+_คือการนำเอาค่าออกมาจากพอยเตอร์_
+
+และที่ต่างจากภาษาซีคือ ในภาษาโก ไม่สามารถเอาค่าพอยเตอร์มาคำนวณได้
 
 .play moretypes/pointers.go
 
 * Structs
 
-A `struct` is a collection of fields.
+`struct` คือที่รวมของฟิลด์หรือตัวแปร
 
 .play moretypes/structs.go
 
-* Struct Fields
+* ข้อมูลใน Struct
 
-Struct fields are accessed using a dot.
+การเข้าถึงฟิลด์ใน struct คือการใช้เครื่องหมายจุด
 
 .play moretypes/struct-fields.go
 
-* Pointers to structs
+* พอยเตอร์ของ struct
 
-Struct fields can be accessed through a struct pointer.
+ฟิลด์ต่าง ๆ ในพอยเตอร์ของ struct ก็ยังสามารถอ้างถึงได้เหมือนเดิม
 
-To access the field `X` of a struct when we have the struct pointer `p` we could
-write `(*p).X`.
-However, that notation is cumbersome, so the language permits us instead to
-write just `p.X`, without the explicit dereference.
+การอ้างถึง `X` ที่อยู่ใน struct ในกรณีที่ `p` เป็นพอยเตอร์ของ struct
+ก็น่าจะต้องเขียนว่า `(*p).X`
+แต่ถ้าทำแบบนั้นมันก็จะดูยุ่งยาก ตัวภาษาจึงอนุญาตให้เราเขียนแบบนี้ `p.X` แทน
 
 .play moretypes/struct-pointers.go
 
-* Struct Literals
+* วิธีประกาศตัวแปรของ struct
 
-A struct literal denotes a newly allocated struct value by listing the values of its fields.
+การประกาศตัวแปรของ struct คือการจองหน่วยความจำเพื่อเก็บค่าแต่ละฟิลด์ที่ระบุลงไป
 
-You can list just a subset of fields by using the `Name:` syntax. (And the order of named fields is irrelevant.)
+คุณสามารถระบุแค่บางชื่อก็ได้ (และลำดับของฟิลด์ก็ไม่มีนัยยะ)
 
-The special prefix `&` returns a pointer to the struct value.
+เครื่องหมาย `&` จะคืนพอยเตอร์ที่ชี้ไปที่ค่าของ struct นั้น
 
 .play moretypes/struct-literals.go
 
 
 * Arrays
 
-The type `[n]T` is an array of `n` values of type `T`.
+ชนิดของตัวแปรแบบ `[n]T` คืออาร์เรย์ ที่มีขนาด `n` ของชนิดตัวแปร `T`
 
-The expression
+การประกาศแบบนี้
 
 	var a [10]int
 
-declares a variable `a` as an array of ten integers.
+คือการประกาศตัวแปร `a` เป็น อาร์เรย์ของ integer ขนาดสิบตัว
 
-An array's length is part of its type, so arrays cannot be resized.
-This seems limiting, but don't worry;
-Go provides a convenient way of working with arrays.
+ความยาวของอาร์เรย์เป็นส่วนหนึ่งของชนิดตัวแปร และอาร์เรย์ไม่สามารถเปลี่ยนขนาดได้
+ดูเหมือนจะมีข้อจำกัด แต่อย่ากังวล
+ภาษาโกได้เตรียมอำนวยความสะดวกในการทำงานกับอาร์เรย์ไว้ให้แล้ว
 
 .play moretypes/array.go
 
 
 * Slices
 
-An array has a fixed size.
-A slice, on the other hand, is a dynamically-sized,
-flexible view into the elements of an array.
-In practice, slices are much more common than arrays.
+ในเมื่ออาร์เรย์นั้นต้องมีขนาดคงที่
+ในทางกลับกัน slice ก็จะมีขนาดแปรผันได้
+เป็นเหมือนอาร์เรย์แบบยืดหยุ่น
+ในทางปฏิบัติ slice ถูกใช้บ่อยกว่าอาร์เรย์
 
-The type `[]T` is a slice with elements of type `T`.
+ชนิดของตัวแปร `[]T` คือ slice ของตัวแปรชนิด `T`
 
-A slice is formed by specifying two indices, a low and
-high bound, separated by a colon:
+วิธีนี้จะสร้าง slice จากสมาชิกตัวแรกไปจนถึงตัวที่ห้าจากอาร์เรย์ `a`
 
-	a[low : high]
+	a[0:5]
 
-This selects a half-open range which includes the first
-element, but excludes the last one.
-
-The following expression creates a slice which includes
-elements 1 through 3 of `a`:
-
-	a[1:4]
 
 .play moretypes/slices.go
 
 
-* Slices are like references to arrays
+* Slices ก็คือการอ้างถึงอาร์เรย์
 
-A slice does not store any data,
-it just describes a section of an underlying array.
+slice เองจะไม่เก็บข้อมูลอะไรเลย
+มันแค่เป็นตัวอธิบายขอบเขตของสมาชิกในอาร์เรย์
 
-Changing the elements of a slice modifies the
-corresponding elements of its underlying array.
+การแก้ไขสมาชิกใน slice ก็คือการแก้ไข
+ไปที่สมาชิกของอาร์เรย์ที่มันอ้างถึงนั่นเอง
 
-Other slices that share the same underlying array will see those changes.
+และ slice ตัวอื่นที่ใช้อาร์เรย์เดียวกันก็จะเห็นการเปลี่ยนแปลงนั้นด้วย
 
 .play moretypes/slices-pointers.go
 
 
-* Slice literals
+* วิธีการประกาศตัวแปร slice
 
-A slice literal is like an array literal without the length.
+การประกาศตัวแปรของ slice นั้นคล้ายกับรูปแบบของอาร์เรย์ เพียงแค่ไม่มีขนาดกำกับ
 
-This is an array literal:
+นี่คือการประกาศตัวแปรอาร์เรย์:
 
 	[3]bool{true, true, false}
 
-And this creates the same array as above,
-then builds a slice that references it:
+และนี่คือการสร้างอาร์เรย์แบบเดียวกับด้านบน
+แล้วก็สร้าง slice ที่อ้างถึงอาร์เรย์นั้นไปพร้อมกัน
 
 	[]bool{true, true, false}
 
@@ -136,15 +129,15 @@ then builds a slice that references it:
 
 * Slice defaults
 
-When slicing, you may omit the high or low bounds to use their defaults instead.
+เวลาที่คุณจะตัด slice คุณสามารถที่จะไม่ระบุขอบบน หรือขอบล่างได้ ซึ่งมันจะเข้าใจได้
 
-The default is zero for the low bound and the length of the slice for the high bound.
+ว่าถ้าเป็นขอบล่างจะหมายถึงค่าศูนย์ ส่วนขอบบนจะหมายถึงขอบจำนวนสูงที่สุดของมัน
 
-For the array
+ถ้ามีอาร์เรย์แบบนี้
 
 	var a [10]int
 
-these slice expressions are equivalent:
+slice พวกนี้จะหมายถึงค่าเดียวกันเลย:
 
 	a[0:10]
 	a[:10]
@@ -154,47 +147,46 @@ these slice expressions are equivalent:
 .play moretypes/slice-bounds.go
 
 
-* Slice length and capacity
+* ความยาวและความจุของ slice
 
-A slice has both a _length_ and a _capacity_.
+slice มีทั้ง _ความยาว_ และ _ความจุ_
 
-The length of a slice is the number of elements it contains.
+ความยาวคือจำนวนของสิ่งที่บรรจุอยู่ภายใน slice
 
-The capacity of a slice is the number of elements in the underlying array,
-counting from the first element in the slice.
+ความจุ คือขนาดของอาร์เรย์ที่อยู่ภายใน slice โดยเริ่มนับจากตัวแรกที่ slice ชี้อยู่
 
-The length and capacity of a slice `s` can be obtained using the expressions
-`len(s)` and `cap(s)`.
+ความยาวและความจุของ slice ที่ชื่อ `s` สามารถรู้ได้จากการใช้คำสั่ง
+`len(s)` และ `cap(s)`
 
-You can extend a slice's length by re-slicing it,
-provided it has sufficient capacity.
-Try changing one of the slice operations in the example program to extend it
-beyond its capacity and see what happens.
+คุณสามารถขยายความยาวของ slice ได้ด้วยการหั่นมันซ้ำอีกครั้ง
+ให้ได้ขนาดที่จำเป็นต้องใช้
+ทดลองแก้ไขค่าในตัวอย่างดูสักค่าหนึ่ง ลองขยายมันออกไปให้เกินความจุ
+แล้วดูว่าจะเกิดอะไรขึ้น
 
 .play moretypes/slice-len-cap.go
 
 
-* Nil slices
+* ค่าว่างของ slice
 
-The zero value of a slice is `nil`.
+ค่าว่างของ slice คือ `nil`
 
-A nil slice has a length and capacity of 0
-and has no underlying array.
+slice ที่เป็น nil จะมีความยาวและความจุเป็น 0
+และไม่มีอาร์เรย์อยู่ในนั้น
 
 .play moretypes/nil-slices.go
 
 
-* Creating a slice with make
+* สร้าง slice ด้วยคำสั่ง make
 
-Slices can be created with the built-in `make` function;
-this is how you create dynamically-sized arrays.
+คุณสามารถสร้าง slice ได้ด้วยฟังก์ชั่นที่มีภายในภาษาโกที่ชื่อ `make`
+นี่คือวิธีที่คุณสามารถสร้าง อาร์เรย์ที่มีขนาดแปรผันได้
 
-The `make` function allocates a zeroed array
-and returns a slice that refers to that array:
+ฟังก์ชั่น `make` จะจองอาร์เรย์ขนาดศูนย์และส่ง slice
+ที่อ้างถึงอาร์เรย์นั้นออกไป
 
 	a := make([]int, 5)  // len(a)=5
 
-To specify a capacity, pass a third argument to `make`:
+ถ้าต้องการระบุความจุให้มันก็ทำได้ด้วยการใส่ค่าอาร์กิวเม้นต์ที่สามให้ `make`
 
 	b := make([]int, 0, 5) // len(b)=0, cap(b)=5
 
@@ -204,158 +196,155 @@ To specify a capacity, pass a third argument to `make`:
 .play moretypes/making-slices.go
 
 
-* Slices of slices
+* Slices ของ slices
 
-Slices can contain any type, including other slices.
+ภายใน slice สามารถมีตัวแปรชนิดไหนอยู่ก็ได้ ไม่เว้นแม้แต่ slice ด้วยกันเอง
 
 .play moretypes/slices-of-slice.go
 
 
-* Appending to a slice
+* การต่อท้าย slice
 
-It is common to append new elements to a slice, and so Go provides a built-in
-`append` function. The [[https://golang.org/pkg/builtin/#append][documentation]]
-of the built-in package describes `append`.
+มันเป็นเรื่องธรรมดาของการเอาข้อมูลไปต่อท้าย slice และภาษาโกก็มีฟังก์ชั่นภายในมาให้ใช้
+ชื่อว่า `append` ดูเอกสารได้ที่ [[https://golang.org/pkg/builtin/#append][เอกสาร]]
+ซึ่งจะอธิบายทุกอย่างของฟังก์ชั่นภายใน ในส่วนของ `append`
 
 	func append(s []T, vs ...T) []T
 
-The first parameter `s` of `append` is a slice of type `T`, and the rest are
-`T` values to append to the slice.
+พารามิเตอร์ตัวแรกคือ `s` ใน `append` คือตัวแปร slice ที่มีชนิดข้อมูล `T` ส่วนที่เหลือ
+คือข้อมูลที่มีชนิด `T` ที่ต้องการนำไปต่อท้าย slice
 
-The resulting value of `append` is a slice containing all the elements of the
-original slice plus the provided values.
+ผลลัพธ์ที่ได้จาก `append` ก็คือ slice ตัวใหม่ที่มีข้อมูลทั้งหมดของ slice ตัวเก่า
+บวกกับ ค่าที่นำไปต่อท้ายทั้งหมด
 
-If the backing array of `s` is too small to fit all the given values a bigger
-array will be allocated. The returned slice will point to the newly allocated
-array.
+ถ้าอาร์เรย์ที่อยู่ใน slice `s` มีขนาดเล็กกว่าข้อมูลที่จะเก็บทั้งหมด มันจะจัดสรรขนาดใหม่
+slice ที่คืนออกไปจะชี้ไปที่อาร์เรย์ที่มีขนาดใหม่แทน
 
-(To learn more about slices, read the [[https://blog.golang.org/go-slices-usage-and-internals][Slices: usage and internals]] article.)
+(ถ้าต้องการเรียนรู้เพิ่มเติมเกี่ยวกับ slice อ่านต่อได้ที่ [[https://blog.golang.org/go-slices-usage-and-internals][Slices: วิธีใช้]])
 
 .play moretypes/append.go
 
 
 * Range
 
-The `range` form of the `for` loop iterates over a slice or map.
+คำเฉพาะ `range` ใช้กับ `for` เพื่อวนลูปของใน slice หรือ map
 
-When ranging over a slice, two values are returned for each iteration.
-The first is the index, and the second is a copy of the element at that index.
+เมื่อเราเริ่มใช้ range กับ slice จะได้ค่ากลับมาสองค่าไปเรื่อย ๆ ทุก ๆ รอบของลูป
+ค่าแรกคือ ดัชนี หรือตำแหน่งของข้อมูลใน slice และค่าที่สองก็คือข้อมูลที่สำเนามาจากข้อมูลในตำแหน่งนั้น
 
 .play moretypes/range.go
 
-* Range continued
+* Range (ต่อ)
 
-You can skip the index or value by assigning to `_`.
+คุณสามารถละเว้นการรับค่า ดัชนี หรือ ข้อมูล ด้วยการใช้สัญลักษณ์ `_`
 
-    for i, _ := range pow
-    for _, value := range pow
-
-If you only want the index, you can omit the second variable.
-
-    for i := range pow
+ถ้าคุณต้องการแค่ค่าดัชนี ก็เอาส่วนของ ", value" ออกไปได้เลย
 
 .play moretypes/range-continued.go
 
-* Exercise: Slices
+* แบบฝึกหัด: Slices
 
-Implement `Pic`. It should return a slice of length `dy`, each element of which is a slice of `dx` 8-bit unsigned integers. When you run the program, it will display your picture, interpreting the integers as grayscale (well, bluescale) values.
+ให้เขียนการทำงานของ `Pic` โดยมันควรที่จะคืนค่า slice ที่มีความยาวเท่ากับ `dy` และในแต่ละชิ้นของ slice นั้น ก็คือ slice ของ `dx` ที่มีชนิดข้อมูลเป็น integer พอคุณรันโปรแกรม มันจะแสดงภาพของคุณ โดยมันจะแปลข้อมูลพวกตัวเลขไปเป็นโทนสีของภาพขาวดำ (หรือดีกว่านั้นก็เป็นโทนสีฟ้า)
 
-The choice of image is up to you. Interesting functions include `(x+y)/2`, `x*y`, and `x^y`.
+จะเลือกภาพอะไรก็ได้แล้วแต่คุณเลย ฟังก์ชั่นที่น่าสนใจจะมี `(x+y)/2`, `x*y`, and `x^y` ร่วมอยู่ด้วย
 
-(You need to use a loop to allocate each `[]uint8` inside the `[][]uint8`.)
+(คุณต้องใช้การวนลูปเพื่อที่จะกำหนดค่า `[]uint8` ไว้ใน `[][]uint8`)
 
-(Use `uint8(intValue)` to convert between types.)
+(และใช้ `uint8(intValue)` เพื่อแปลงชนิดข้อมูล)
 
 .play moretypes/exercise-slices.go
 
 * Maps
 
-A map maps keys to values.
+map ใช้จับคู่ด้วยคีย์กับข้อมูลเข้าด้วยกัน
 
-The zero value of a map is `nil`.
-A `nil` map has no keys, nor can keys be added.
+ค่าว่างของ map คือ `nil`
+`nil` ของ map ก็คือ ไม่มีคีย์เลย และก็ใส่ลงไปไม่ได้ด้วย
 
-The `make` function returns a map of the given type,
-initialized and ready for use.
+ฟังก์ชั่น `make` จะคืนค่า map พร้อมชนิดข้อมูลกลับมา และทำให้พร้อมใช้งานด้วย
 
 .play moretypes/maps.go
 
-* Map literals
+* การประกาศตัวแปร Map
 
-Map literals are like struct literals, but the keys are required.
+การประกาศตัวแปรแบบ map นั้นคล้ายกับ struct แต่ต่างกันตรงที่ map จะต้องมีคีย์เสมอ
 
 .play moretypes/map-literals.go
 
-* Map literals continued
+* การประกาศตัวแปร Map (ต่อ)
 
-If the top-level type is just a type name, you can omit it from the elements of the literal.
+ชั้นบนสุดของการประกาศคือชนิดของข้อมูล คุณไม่จำเป็นต้องใส่ชนิดของข้อมูลให้ข้อมูลทีละชุดก็ได้
 
 .play moretypes/map-literals-continued.go
 
-* Mutating Maps
+* วิธีใช้ Maps
 
-Insert or update an element in map `m`:
+เพิ่มข้อมูลหรือแก้ไขข้อมูลใน map `m` แบบนี้:
 
 	m[key] = elem
 
-Retrieve an element:
+การเอาข้อมูลออกมาทำแบบนี้:
 
 	elem = m[key]
 
-Delete an element:
+การลบข้อมูลออกทำแบบนี้:
 
 	delete(m, key)
 
-Test that a key is present with a two-value assignment:
+วิธีทดสอบว่ามีกุญแจนั้นอยู่หรือไม่ ด้วยการคืนสองค่าแบบนี้ออกมา:
 
 	elem, ok = m[key]
 
-If `key` is in `m`, `ok` is `true`. If not, `ok` is `false`.
+ถ้า `key` มีอยู่ใน `m` จริง ค่า `ok` จะเป็น `true` แต่ถ้าไม่มี `ok` จะเป็น `false`
 
-If `key` is not in the map, then `elem` is the zero value for the map's element type.
+ถ้า `key` ไม่มีอยู่ใน map ค่า `elem` จะเป็นค่าว่างของชนิดข้อมูลนั้น
 
-*Note:* If `elem` or `ok` have not yet been declared you could use a short declaration form:
+_ข้อควรจำ_: ถ้า `elem` หรือ `ok` ยังไม่ได้ถูกประกาศไว้ก่อน คุณควรใช้การประกาศตัวแปรแบบย่อ:
 
 	elem, ok := m[key]
 
 .play moretypes/mutating-maps.go
 
-* Exercise: Maps
+* แบบฝึกหัด: Maps
 
-Implement `WordCount`.  It should return a map of the counts of each “word” in the string `s`. The `wc.Test` function runs a test suite against the provided function and prints success or failure.
+จงเขียน `WorkCount` ให้เสร็จ โดยมันควรคืนค่า map ที่นับจำนวนคำแต่ละคำที่อยู่ในข้อความของตัวแปร `s` ฟังก์ชั่น `wc.Test` เป็นระบบทดสอบความถูกต้องให้ฟัง์ชั่นของคุณ โดยมันจะแสดงข้อความ สำเร็จ หรือ ล้มเหลว ออกมาให้
 
-You might find [[https://golang.org/pkg/strings/#Fields][strings.Fields]] helpful.
+ข้อมูลในนี้ [[https://golang.org/pkg/strings/#Fields][strings.Fields]] อาจช่วยคุณได้บ้าง
 
 .play moretypes/exercise-maps.go
 
-* Function values
+* ฟังก์ชั่นใช้เหมือนตัวแปร
 
-Functions are values too. They can be passed around just like other values.
+ฟังก์ชั่น สามารถเป็นข้อมูลได้ด้วย มันสามารถนำไปใช้เหมือนเป็นตัวแปรได้เลย
 
-Function values may be used as function arguments and return values.
+ฟังก์ชั่นที่เป็นข้อมูลได้นี้ อาจจะถูกน้ำไปใช้เป็นอาร์กิวเม้นต์ให้ฟังก์ชั่นอื่น หรือใช้เป็นค่าส่งคืนออกมาก็ได้
 
 .play moretypes/function-values.go
 
-* Function closures
+* การสร้างอาณาเขตของฟังก์ชั่น
 
-Go functions may be closures. A closure is a function value that references variables from outside its body. The function may access and assign to the referenced variables; in this sense the function is "bound" to the variables.
+ฟังก์ชั่นในภาษาโกสามารถสร้างอาณาเขตในการการอ้างถึงตัวแปรได้ในบางวิธี
 
-For example, the `adder` function returns a closure. Each closure is bound to its own `sum` variable.
+การสร้างอาณาเขต คือฟังก์ชั่นที่มีสภาวะเป็นตัวแปร จะสามารถอ้างถึงตัวแปรที่อยู่นอกตัวเองได้
+
+ซึ่งอาจจะอ้างถึงหรือกำหนดค่าได้ด้วย ประหนึ่งว่าเป็นตัวแปร "ภายใน" ของตัวมันเอง
+
+จากตัวอย่างนี้ ฟังก์ชั่น `adder` จะคืนค่าเป็นฟังก์ชั่นแบบสร้างอาณาเขต โดยแต่ละฟัง์ชั่นที่ได้มานั้น จะมีอาณาเขตครอบคลุมถึงตัวแปร `sum` ของตัวเอง
 
 .play moretypes/function-closures.go
 
-* Exercise: Fibonacci closure
+* แบบฝึกหัด: Fibonacci closure
 
-Let's have some fun with functions.
+ขอให้สนุกกับฟังก์ชั่น
 
-Implement a `fibonacci` function that returns a function (a closure) that
-returns successive [[https://en.wikipedia.org/wiki/Fibonacci_number][fibonacci numbers]]
-(0, 1, 1, 2, 3, 5, ...).
+ให้ทำฟังก์ชั่น `fibonacci` ให้เสร็จ โดยมันจะคืนฟังก์ชั่น (สร้างอาณาเขต)
+ที่จะคืนค่า[[https://en.wikipedia.org/wiki/Fibonacci_number][ตัวเลข ฟีโบนัคซี่]] ออกมาอย่างต่อเนื่อง
+(0, 1, 1, 2, 3, 5, ...)
 
 .play moretypes/exercise-fibonacci-closure.go
 
-* Congratulations!
+* ยินดีด้วย!
 
-You finished this lesson!
+คุณจบบทนี้แล้ว!
 
-You can go back to the list of [[/list][modules]] to find what to learn next, or continue with the [[javascript:click('.next-page')][next lesson]].
+คุณสามารถย้อนกลับไปดูรายการทั้งหมดได้ที่ [[/list][modules]] เพื่อค้นหาสิ่งที่คุณอยากจะเรียนรู้ต่อ หรือไปสู่ [[javascript:click('.next-page')][บทถัดไป]]

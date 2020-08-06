@@ -1,131 +1,131 @@
-Packages, variables, and functions.
-Learn the basic components of any Go program.
+แพ็กเกจ ตัวแปร และฟังก์ชั่น
+เรียนรู้เกี่ยวกับส่วนประกอบพื้นฐานที่สำคัญของโปรแกรมที่เขียนด้วยภาษาโก
 
 The Go Authors
 https://golang.org
 
 * Packages
 
-Every Go program is made up of packages.
+ทุก ๆ โปรแกรมของภาษาโก จะถูกสร้างขึ้นจากแพ็กเกจต่าง ๆ
 
-Programs start running in package `main`.
+โปรแกรมเริ่มต้นทำงานในแพ็กเกจที่ชื่อ `main`
 
-This program is using the packages with import paths `"fmt"` and `"math/rand"`.
+โปรแกรมนี้เรียกใช้งานแพ็กเกจด้วยการนำเข้าพาธ `"fmt"` และ `"math/rand"`
 
-By convention, the package name is the same as the last element of the import path. For instance, the `"math/rand"` package comprises files that begin with the statement `package`rand`.
+ตามธรรมเนียมปฏิบัติแล้ว ชื่อแพ็กเกจก็จะตรงกับองค์ประกอบสุดท้ายของพาธที่นำเข้ามา ตัวอย่างเช่น แพ็กเกจ `"math/rand"` จะประกอบด้วยไฟล์ที่ขึ้นต้นด้วยคำสั่ง `package`rand`
 
-#appengine: *Note:* The environment in which these programs are executed is
-#appengine: deterministic, so each time you run the example program
-#appengine: `rand.Intn` will return the same number.
+#appengine: *โปรดจำไว้ว่า:* สภาพแวดล้อมที่โปรแกรมถูกทำงานนี้นั้น
+#appengine: อยู่ภายใต้ความควบคุม นั่นทำให้ทุกครั้งที่รันโปรแกรม
+#appengine: `rand.Intn` จะคืนค่าเดียวกันเสมอ
 #appengine:
-#appengine: (To see a different number, seed the number generator; see [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].
-#appengine: Time is constant in the playground, so you will need to use something else as the seed.)
+#appengine: (ถ้าต้องการเห็นค่าที่ต่างจากเดิม ให้กำหนดค่า seed ที่ใช้ในการสร้างตัวผลิตเลข ดูต่อที่ [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]])
+#appengine: เวลาจะเป็นค่าคงที่เมื่อลองเล่นใน playground ดังนั้นคุณจะต้องใช้อย่างอื่นเป็นค่า seed แทน
 
 .play basics/packages.go
 
 * Imports
 
-This code groups the imports into a parenthesized, "factored" import statement.
+โค้ดชุดนี้ ทำการรวมการ import ไว้ในวงเล็บ หรือการ "รวบ" ขั้นตอนการ import
 
-You can also write multiple import statements, like:
+หรือคุณอยากจะการ import หลาย ๆ ครั้งแบบนี้ก็ย่อมได้:
 
 	import "fmt"
 	import "math"
 
-But it is good style to use the factored import statement.
+แต่มันจะเป็นรูปแบบการเขียนโปรแกรมที่ดีกว่าถ้าใช้การ import แบบรวบ
 
 .play basics/imports.go
 
 * Exported names
 
-In Go, a name is exported if it begins with a capital letter.
-For example, `Pizza` is an exported name, as is `Pi`, which is exported from
-the `math` package.
+ในภาษาโก ชื่อใด ๆ ก็ตามจะถูกส่งออกภายนอกเมื่อมันขึ้นต้นด้วยอักษรตัวใหญ่
+ตัวอย่างเช่น `Pizza` เป็นชื่อที่ถูกส่งออกภายนอก เหมือนกับที่ `Pi`, ถูกส่งออกมาจาก
+แพ็กเกจ `math` 
 
-`pizza` and `pi` do not start with a capital letter, so they are not exported.
+`pizza` และ `pi` ไม่ได้ขึ้นต้นด้วยอักษรตัวใหญ่ มันจึงไม่ถูกส่งออกให้ภายนอกใช้
 
-When importing a package, you can refer only to its exported names.
-Any "unexported" names are not accessible from outside the package.
+เมื่อนำเข้าแพ็กเกจใดก็ตาม คุณจะสามารถอ้างถึงได้เฉพาะชื่อที่ถูกส่งออกมาเท่านั้น
+ชื่ออื่น ๆ ที่ "ไม่ได้ถูกส่งออก" จะไม่สามารถเข้าถึงจากภายนอกแพ็กเกจนั้นได้เลย
 
-Run the code. Notice the error message.
+รันโค้ดนี้ แล้วสังเกตข้อความผิดพลาด
 
-To fix the error, rename `math.pi` to `math.Pi` and try it again.
+ทำการแก้ไขความผิดพลาดนี้ด้วยการแก้ไขชื่อ `math.pi` ไปเป็น `math.Pi` แล้วลองใหม่อีกครั้ง
 
 .play basics/exported-names.go
 
 * Functions
 
-A function can take zero or more arguments.
+ฟังก์ชั่น สามารถรับอาร์กิวเมนต์ ศูนย์ตัว หรือมากกว่านั้นก็ได้
 
-In this example, `add` takes two parameters of type `int`.
+ในตัวอย่างนี้ `add` รับพารามิเตอร์สองตัว เป็นชนิด `int`
 
-Notice that the type comes _after_ the variable name.
+สังเกตว่าชนิดของตัวแปรจะอยู่ _ด้านหลัง_ ชื่อตัวแปรนั้น
 
-(For more about why types look the way they do, see the [[https://blog.golang.org/gos-declaration-syntax][article on Go's declaration syntax]].)
+(หากต้องการจะรู้ว่า ชนิดของตัวแปรต่าง ๆ เป็นอย่างไร ดูต่อได้ที่ [[https://blog.golang.org/gos-declaration-syntax][บทความในเรื่อง Go's declaration syntax]])
 
 .play basics/functions.go
 
-* Functions continued
+* Functions (ต่อ)
 
-When two or more consecutive named function parameters share a type, you can omit the type from all but the last.
+เมื่อมีพารามิเตอร์สองตัวติดกันหรือมากกว่านั้น เป็นตัวแปรชนิดเดียวกัน คุณสามารถเว้นการระบุชนิดตัวแปรได้และไปประกาศไว้ที่ตัวสุดท้ายทีเดียว
 
-In this example, we shortened
+ในตัวอย่างนี้ เราจะย่อจาก
 
 	x int, y int
 
-to
+เป็นแบบนี้
 
 	x, y int
 
 .play basics/functions-continued.go
 
-* Multiple results
+* การคืนผลลัพธ์มากกว่าหนึ่ง
 
-A function can return any number of results.
+ฟังก์ชั่น สามารถคืนค่ากลับได้หลาย ๆ ค่า
 
-The `swap` function returns two strings.
+ในตัวอย่างนี้ ฟังก์ชั่น `swap` คืนค่าเป็นข้อความสองค่า
 
 .play basics/multiple-results.go
 
-* Named return values
+* การตั้งชื่อให้ค่าที่จะส่งคืน
 
-Go's return values may be named. If so, they are treated as variables defined at the top of the function.
+ภาษาโกสามารถตั้งชื่อให้ตัวแปรที่จะส่งคืนได้ ซึ่งหากตั้งชื่อไว้ก่อน ตัวแปรพวกนี้จะถูกทำเหมือนกับว่ามันเป็นตัวแปรที่ถูกประกาศไว้ที่ด้านบนของฟังก์ชั่น
 
-These names should be used to document the meaning of the return values.
+ชื่อพวกนี้ควรจะสื่อความหมายว่าค่าที่จะส่งคืนนั้นหมายถึงอะไร
 
-A `return` statement without arguments returns the named return values. This is known as a "naked" return.
+การ `return` โดยไม่มีอะไรต่อท้าย จะเป็นการส่งคืนตัวแปรที่ตั้งชื่อไว้ เรียกอีกอย่างว่าการคืนค่าแบบ "เปลือย"
 
-Naked return statements should be used only in short functions, as with the example shown here. They can harm readability in longer functions.
+การคืนค่าแบบเปลือย ควรถูกใช้เฉพาะฟังก์ชั่นสั้น ๆ เหมือนในตัวอย่างนี้ เพราะมันอาจจะทำให้อ่านยากถ้าไปใช้ในฟังก์ชั่นที่ยาว ๆ
 
 .play basics/named-results.go
 
-* Variables
+* ตัวแปร
 
-The `var` statement declares a list of variables; as in function argument lists, the type is last.
+`var` ใช้ประกาศชุดของตัวแปร เหมือนประกาศชุดของอาร์กิวเม้นต์ในฟังก์ชั่น และใส่ชนิดของตัวแปรปิดท้าย
 
-A `var` statement can be at package or function level. We see both in this example.
+`var` จะอยู่ในระดับแพ็กเกจ หรือระดับของฟังก์ชั่นก็ได้ เราจะเห็นทั้งสองแบบจากตัวอย่าง
 
 .play basics/variables.go
 
-* Variables with initializers
+* ตัวแปรกับค่าเริ่มต้น
 
-A var declaration can include initializers, one per variable.
+การประกาศตัวแปรสามารถกำหนดค่าเบื้องต้นไปพร้อมกันได้ ตัวแปรละหนึ่งค่า
 
-If an initializer is present, the type can be omitted; the variable will take the type of the initializer.
+ถ้ามีการกำหนดค่าเบื้องต้น สามารถยกเว้นการระบุชนิดตัวแปรได้ ตัวแปรจะใช้ชนิดของค่าเบื้องต้นนั้นเลย
 
 .play basics/variables-with-initializers.go
 
-* Short variable declarations
+* การประกาศตัวแปรแบบย่อ
 
-Inside a function, the `:=` short assignment statement can be used in place of a `var` declaration with implicit type.
+ในฟังก์ชั่นมีการใช้ `:=` เป็นการประกาศตัวแปรแบบย่อ สามารถใช้แทนการประกาศด้วย `var` ได้ ซึ่งจะได้รับชนิดตัวแปรโดยปริยาย
 
-Outside a function, every statement begins with a keyword (`var`, `func`, and so on) and so the `:=` construct is not available.
+ส่วนการประกาศตัวแปรนอกฟังก์ชั่น ต้องเริ่มต้นด้วยคำเฉพาะ (`var`, `func` และอื่น ๆ) และไม่สามารถใช้ `:=` ได้
 
 .play basics/short-variable-declarations.go
 
-* Basic types
+* ชนิดตัวแปรพื้นฐาน
 
-Go's basic types are
+ตัวแปรพื้นฐานของภาษาโกมีดังนี้
 
 	bool
 
@@ -134,102 +134,98 @@ Go's basic types are
 	int  int8  int16  int32  int64
 	uint uint8 uint16 uint32 uint64 uintptr
 
-	byte // alias for uint8
+	byte // นามแฝงของ uint8
 
 	rune // alias for int32
-	     // represents a Unicode code point
+	     // ใช้อ้างถึง Unicode
 
 	float32 float64
 
 	complex64 complex128
 
-The example shows variables of several types,
-and also that variable declarations may be "factored" into blocks,
-as with import statements.
+ตามตัวอย่างจะแสดงตัวแปรหลากหลายชนิด และแน่นอนว่ามันก็สามารถ รวบ การประกาศเป็นกลุ่มได้ เหมือนกับการนำเข้าแพ็กเกจ
 
-The `int`, `uint`, and `uintptr` types are usually 32 bits wide on 32-bit systems and 64 bits wide on 64-bit systems.
-When you need an integer value you should use `int` unless you have a specific reason to use a sized or unsigned integer type.
+ชนิดของตัวแปรแบบ `int`, `uint` และ `uintptr` ปกติจะมี 32 บิต บนระบบที่เป็น 32 บิต และจะเป็น 64 บิต บนระบบที่เป็น 64 บิต
+ถ้าต้องการค่าตัวเลขจำนวนเต็ม ควรใช้ `int` เว้นแต่ว่าคุณจะมีเหตุผลบางอย่างที่จะต้องระบุขนาดหรือค่าสัมบูรณ์ให้ชนิดตัวแปรนั้น
 
 .play basics/basic-types.go
 
-* Zero values
+* ค่าว่าง
 
-Variables declared without an explicit initial value are given their
-_zero_value_.
+ตัวแปรที่ถูกประกาศและไม่ได้ให้ค่าเบื้องต้นไว้ มันจะถูกกำหนด _ค่าว่าง_ ให้
 
-The zero value is:
+ค่าว่างคือ:
 
-- `0` for numeric types,
-- `false` for the boolean type, and
-- `""` (the empty string) for strings.
+- `0` สำหรับตัวแปรที่เป็นตัวเลข
+- `false` สำหรับตัวแปรแบบนิพจน์ และ
+- `""` (ข้อความเปล่า) สำหรับตัวแปรชนิดข้อความ
 
 .play basics/zero.go
 
-* Type conversions
+* การแปลงชนิดของตัวแปร
 
-The expression `T(v)` converts the value `v` to the type `T`.
+กระบวนท่า `T(v)` คือการแปลงค่า `v` ไปเป็นชนิดตัวแปรแบบ `T`
 
-Some numeric conversions:
+การแปลงค่าตัวเลขบางชนิด:
 
 	var i int = 42
 	var f float64 = float64(i)
 	var u uint = uint(f)
 
-Or, put more simply:
+หรือจะลองแบบย่อ:
 
 	i := 42
 	f := float64(i)
 	u := uint(f)
 
-Unlike in C, in Go assignment between items of different type requires an
-explicit conversion.
-Try removing the `float64` or `uint` conversions in the example and see what happens.
+ซึ่งจะแตกต่างจากภาษาซี เพราะในภาษาโก การส่งค่าระหว่างของคนละชนิดกันจำเป็นจะต้องแปลงชนิดก่อน
+ทดลองเอาการแปลงชนิด `float64` หรือ `uint` ออกแล้วลองดูว่าจะเกิดอะไรขึ้น
 
 .play basics/type-conversions.go
 
-* Type inference
+* การอนุมานชนิดตัวแปร
 
-When declaring a variable without specifying an explicit type (either by using the `:=` syntax or `var`=` expression syntax), the variable's type is inferred from the value on the right hand side.
+เวลาที่ประกาศตัวแปรโดยไม่ระบุชนิด (ไม่ว่าจะใช้รูปแบบ `:=` หรือรูปแบบ `var`=`) ชนิดของตัวแปรจะได้จากการอนุมานเอาจากค่าที่ระบุทางขวามือ
 
-When the right hand side of the declaration is typed, the new variable is of that same type:
+ถ้าหากค่าทางขวามีชนิดอยู่แล้ว ตัวแปรใหม่จะได้ชนิดตัวแปรเดียวกัน:
 
 	var i int
-	j := i // j is an int
+	j := i // j จะมีชนิดเป็น int
 
-But when the right hand side contains an untyped numeric constant, the new variable may be an `int`, `float64`, or `complex128` depending on the precision of the constant:
+แต่ถ้าหากว่าค่าทางฝั่งขวาเป็นตัวเลขที่ไม่ระบุชนิด ตัวแปรใหม่อาจจะเป็น `int`, `float64` หรือ `complex128` ขึ้นอยู่กับความความแม่นยำของการให้ค่านั้น ๆ :
 
 	i := 42           // int
 	f := 3.142        // float64
 	g := 0.867 + 0.5i // complex128
 
-Try changing the initial value of `v` in the example code and observe how its type is affected.
+ทดลองแก้ค่า `v` ในตัวอย่างแล้วสังเกตว่าจะส่งผลกระทบถึงชนิดตัวแปรอย่างไร
 
 .play basics/type-inference.go
 
-* Constants
+* ค่าคงที่
 
-Constants are declared like variables, but with the `const` keyword.
+ค่าคงที่ถูกประกาศแบบเดียวกับตัวแปร แต่จะใช้คำเฉพาะว่า `const`
 
-Constants can be character, string, boolean, or numeric values.
+ค่าคงที่สามารถเป็น ตัวอักษร ข้อความ นิพจน์ หรือตัวเลขก็ได้
 
-Constants cannot be declared using the `:=` syntax.
+ค่าคงที่ไม่สามารถประกาศด้วย `:=` ได้
 
 .play basics/constants.go
 
-* Numeric Constants
+* ค่าคงที่ตัวเลข
 
-Numeric constants are high-precision _values_.
+ค่าคงที่ตัวเลข เป็น _ค่า_ ความแม่นยำสูง
 
-An untyped constant takes the type needed by its context.
+ค่าคงที่ที่ไม่ระบุชนิดจะได้ชนิดตามบริบทของมัน
 
-Try printing `needInt(Big)` too.
+ทดลองพิมพ์ `needInt(Big)` เพิ่มเข้าไปด้วย
 
-(An `int` can store at maximum a 64-bit integer, and sometimes less.)
+(ตัวแปรชนิด `int` สามารถเก็บตัวเลขได้สูงสุด 64 บิต และน้อยกว่าในบางครั้ง)
 
 .play basics/numeric-constants.go
 
-* Congratulations!
+* ยินดีด้วย!
 
-You finished this lesson!
+คุณจบบทนี้แล้ว!
 
-You can go back to the list of [[/list][modules]] to find what to learn next, or continue with the [[javascript:click('.next-page')][next lesson]].
+คุณสามารถย้อนกลับไปดูรายการทั้งหมดของ [[/list][modules]] เพื่อดูว่าจะเรียนอะไรต่อไป หรือไปต่อที่ [[javascript:click('.next-page')][บทต่อไป]].

@@ -1,116 +1,109 @@
-Welcome!
-Learn how to use this tour: including how to navigate the different lessons and how to run code.
+ยินดีต้อนรับ!
+เรียนรู้การใช้งานทัวร์นี้ รวมถึงการเปลี่ยนไปยังบทเรียนต่าง ๆ และการรันโค้ด
 
 The Go Authors
 https://golang.org
 
-* Hello, 世界
+* Hello, สวัสดี
 
-Welcome to a tour of the [[https://golang.org/][Go programming language]].
+ยินดีต้อนรับเข้าสู่ทัวร์ของ [[https://golang.org/][ภาษาโก]].
 
-The tour is divided into a list of modules that you can
-access by clicking on
-[[javascript:highlight(".logo")][A Tour of Go]] on the top left of the page.
+ทัวร์นี้ได้แบ่งเนื้อหาไว้ตามโมดูลซึ่งคุณสามารถดูได้ด้วยการคลิกที่
+[[javascript:highlight(".logo")][A Tour of Go]] ตรงมุมบนสุดด้านซ้ายของเพจ
 
-You can also view the table of contents at any time by clicking on the [[javascript:highlightAndClick(".nav")][menu]] on the top right of the page.
+และก็ยังสามารถดูตารางของเนื้อหาได้ตลอดเวลาโดยการคลิกที่ [[javascript:highlightAndClick(".nav")][menu]] ตรงมุมบนสุดด้านขวาของเพจ
 
-Throughout the tour you will find a series of slides and exercises for you
-to complete.
+ตลอดการเดินทางนี้ คุณจะสามารถเลื่อนไปหาสไลด์และแบบฝึกหัดทั้งหมดได้
 
-You can navigate through them using
+ด้วยการใช้
 
-- [[javascript:highlight(".prev-page")]["previous"]] or `PageUp` to go to the previous page,
+- [[javascript:highlight(".prev-page")]["previous"]] หรือ `PageUp` สำหรับเลื่อนกลับไปหน้าที่แล้ว,
 
-- [[javascript:highlight(".next-page")]["next"]] or `PageDown` to go to the next page.
+- [[javascript:highlight(".next-page")]["next"]] หรือ `PageDown` สำหรับเลื่อนไปหน้าถัดไป
 
-The tour is interactive. Click the
-[[javascript:highlightAndClick("#run")][Run]] button now
-(or press `Shift` + `Enter`) to compile and run the program on
-#appengine: a remote server.
-your computer.
-The result is displayed below the code.
+ทัวร์ สามารถให้คุณทดลองผ่านหน้าจอได้ด้วย ลองคลิกที่ปุ่ม
+[[javascript:highlightAndClick("#run")][Run]] ตอนนี้เลย
+(หรือกดปุ่ม `shift-enter`) เพื่อทำการคอมไพล์และรันโปรแกรม
+#appengine: บนรีโมทเซิร์ฟเวอร์
+และผลลัพธ์จะถูกส่งมาแสดงผลบนเครื่องของคุณ
 
-These example programs demonstrate different aspects of Go. The programs in the tour are meant to be starting points for your own experimentation.
+โปรแกรมตัวอย่างเหล่านี้จะแสดงให้เห็นถึงแง่มุมต่าง ๆ ของภาษาโก โปรแกรมต่าง ๆ ในทัวร์ จะเป็นจุดเริ่มต้นสำหรับให้คุณได้ทำการทดลองด้วยตัวเอง
 
-Edit the program and run it again.
+ลองแก้ไขโปรแกรมนี้แล้วรันดูอีกทีสิ
 
-When you click on [[javascript:highlightAndClick("#format")][Format]]
-(shortcut: `Ctrl` + `Enter`), the text in the editor is formatted using the
-[[https://golang.org/cmd/gofmt/][gofmt]] tool. You can switch syntax highlighting on and off
-by clicking on the [[javascript:highlightAndClick(".syntax-checkbox")][syntax]] button.
+โปรดจำไว้ว่า เมื่อคุณคลิกที่ปุ่ม [[javascript:highlightAndClick("#format")][Format]] หรือกด `ctrl-enter`
+ตัวหนังสือในกล่องข้อความจะถูกจัดรูปแบบด้วยเครื่องมือที่ชื่อว่า
+[[https://golang.org/cmd/gofmt/][gofmt]] และคุณสามารถเลือกให้แสดงสีตามไวยากรณ์ของภาษาหรือไม่ก็ได้
+ด้วยการคลิกที่ปุ่ม [[javascript:highlightAndClick(".syntax-checkbox")][syntax]] 
 
-When you're ready to move on, click the [[javascript:highlightAndClick(".next-page")][right arrow]] below or type the `PageDown` key.
+หากคุณพร้อมที่จะไปต่อ ให้คลิกที่ปุ่ม [[javascript:highlightAndClick(".next-page")][right arrow]] ด้านล่างนี้ หรือกดปุ่ม `PageDown` บนคีย์บอร์ด
 
 .play welcome/hello.go
 
 * Go local
 
-The tour is available in other languages:
+เดินทางไปกับหลากหลายภาษา:
 
-- [[https://go-tour-ar.appspot.com/][Arabic — العربية]]
 - [[https://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
 - [[https://go-tour-ca.appspot.com/][Catalan — Català]]
-- [[https://tour.go-zh.org/][Simplified Chinese — 中文（简体）]]
-- [[https://go-tour-zh-tw.appspot.com/][Traditional Chinese — 中文（繁體）]]
-- [[https://go-tour-cz.appspot.com/][Czech — Česky]]
-- [[https://go-tour-fr.appspot.com/][French — Français]]
 - [[https://go-tour-de.appspot.com/][German — Deutsch]]
-- [[https://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
-- [[https://go-tour-id2.appspot.com/][Indonesian — Bahasa Indonesia]]
+- [[https://go-tour-es.appspot.com/][Spanish — Español]]
+- [[https://go-tour-fr.appspot.com/][French — Français]]
+- [[https://go-tour-id2.appspot.com/][Indonesia — Bahasa]]
 - [[https://go-tour-ita.appspot.com/][Italian — Italiano]]
+- [[https://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
 - [[https://go-tour-jp.appspot.com/][Japanese — 日本語]]
 - [[https://go-tour-kr.appspot.com/][Korean — 한국어]]
 - [[https://go-tour-ro.appspot.com/][Romanian — Română]]
-- [[https://go-tour-ru-ru.appspot.com/][Russian - Русский]]
-- [[https://gotour-es.appspot.com/][Spanish — Español]]
-- [[https://go-tour-th.appspot.com/][Thai - ภาษาไทย]]
-- [[https://go-tour-turkish.appspot.com/][Turkish - Türkçe]]
+- [[https://tour.go-zh.org/][Simplified Chinese — 中文（简体）]]
+- [[https://go-tour-zh-tw.appspot.com/][Traditional Chinese — 中文（繁體）]]
 - [[https://go-tour-ua.appspot.com/][Ukrainian — Українська]]
 - [[https://go-tour-uz.appspot.com/][Uzbek — Ўзбекча]]
+- [[https://go-tour-turkish.appspot.com/][Turkish - Türkçe]]
+- [[https://go-tour-th.appspot.com/][Thai - ภาษาไทย]]
 
-Click the [[javascript:highlightAndClick(".next-page")]["next"]] button or type `PageDown` to continue.
+คลิกที่ปุ่ม [[javascript:highlightAndClick(".next-page")]["next"]] หรือกดปุ่ม `PageDown` บนคีย์บอร์ดเพื่อไปต่อ
 
-#appengine: * Go offline (optional)
-#appengine:
-#appengine: This tour is also available as a stand-alone program that you can use
-#appengine: without access to the internet. It builds and runs the code samples on
-#appengine: your own machine.
-#appengine:
-#appengine: To run the tour locally, you'll need to first
-#appengine: [[https://golang.org/doc/install][install Go]] and then run:
-#appengine:
-#appengine:   go get golang.org/x/tour
-#appengine:
-#appengine: This will place a `tour` binary in your
-#appengine: [[https://golang.org/doc/code.html#Workspaces][workspace]]'s `bin` directory.
-#appengine: When you run the tour program, it will open a web browser displaying
-#appengine: your local version of the tour.
-#appengine:
-#appengine: Of course, you can continue to take the tour through this web site.
+#appengine: * Go offline
+#appengine: 
+#appengine: ถึงแม้ว่าจะไม่มีอินเตอร์เน็ต ก็ยังทัวร์ได้
+#appengine: 
+#appengine: และมันยังทำงานเร็วกว่าด้วย เพราะมันจะรันบนเครื่องของคุณเอง
+#appengine: 
+#appengine: หากคุณต้องการ
+#appengine: [[http://golang.org/dl/][ดาวน์โหลดและติดตั้งภาษาโก]]
+#appengine: จากนั้น เริ่มต้นทัวร์ด้วยคำสั่ง:
+#appengine: 
+#appengine: 	go tool tour
+#appengine: 
+#appengine: โปรแกรมทัวร์จะเปิดเบาวเซอร์ขึ้นมา
+#appengine: ทำงานจากเครื่องคุณเองโดยตรง
+#appengine: 
+#appengine: หรือแม้ว่า คุณยังอยากจะทัวร์ต่อไปกับเราบนนี้ก็ได้เช่นเดียวกัน
 
 #appengine: * The Go Playground
-#appengine:
-#appengine: This tour is built atop the [[https://play.golang.org/][Go Playground]], a
-#appengine: web service that runs on [[https://golang.org/][golang.org]]'s servers.
-#appengine:
-#appengine: The service receives a Go program, compiles, links, and runs the program inside
-#appengine: a sandbox, then returns the output.
-#appengine:
-#appengine: There are limitations to the programs that can be run in the playground:
-#appengine:
-#appengine: - In the playground the time begins at 2009-11-10 23:00:00 UTC (determining the significance of this date is an exercise for the reader). This makes it easier to cache programs by giving them deterministic output.
-#appengine:
-#appengine: - There are also limits on execution time and on CPU and memory usage, and the program cannot access external network hosts.
-#appengine:
-#appengine: The playground uses the latest stable release of Go.
-#appengine:
-#appengine: Read "[[https://blog.golang.org/playground][Inside the Go Playground]]" to learn more.
-#appengine:
+#appengine: 
+#appengine: ทัวร์ถูกสร้างครอบอยู่บน [[https://play.golang.org/][Go Playground]], 
+#appengine: ซึ่งเป็นเว็บเซอร์วิสที่รันอยู่บนเซิร์ฟเวอร์ของ [[https://golang.org/][golang.org]] อีกที
+#appengine: 
+#appengine: ซึ่งมันจะรับโปรแกรมภาษาโก ไปคอมไพล์ ลิงก์ และรันโปรแกรมอยู่ภายใน
+#appengine: สภาพแวดล้อมสำหรับการทดลอง(sandbox) และส่งผลลัพธ์คืนมาให้
+#appengine: 
+#appengine: มันมีข้อจำกัดบางประการ ของโปรแกรมที่จะถูกรันบน playground
+#appengine: 
+#appengine: - ใน playground เวลาจะเริ่มต้นที่ 2009-11-10 23:00:00 UTC เสมอ (ผู้อ่านจะได้ทำแบบทดสอบเกี่ยวกับเรื่องนี้) ซึ่งจะทำให้ง่ายในการเก็บโปรแกรมเอาไว้ ด้วยการหยุดเวลาไว้ตรงนี้
+#appengine: 
+#appengine: - ในนี้ยังถูกจำกัดระยะเวลาในการทำงาน และปริมาณการใช้ CPU และ หน่วยความจำ และไม่สามารถติดต่อไปยังโฮสต์ภายนอกผ่านเน็ตเวิร์คได้
+#appengine: 
+#appengine: Playground จะใช้ภาษาโกเวอร์ชั่นล่าสุดที่เสถียรแล้วเสมอ
+#appengine: 
+#appengine: โปรดอ่าน "[[https://blog.golang.org/playground][Inside the Go Playground]]" เพื่อเรียนรู้เพิ่มเติม
+#appengine: 
 #appengine: .play welcome/sandbox.go
 
-* Congratulations
+* ขอแสดงความยินดี
 
-You've finished the first module of the tour!
+คุณได้สำเร็จด่านแรกของการเดินทางแล้ว!
 
-Now click on [[javascript:highlightAndClick(".logo")][A Tour of Go]] to find out what else
-you can learn about Go, or go directly to the [[javascript:click('.next-page')][next lesson]].
+ลองคลิกที่ [[javascript:highlightAndClick(".logo")][A Tour of Go]] เพื่อดูว่าอะไรที่คุณจะสามารถเรียนรู้
+เกี่ยวกับภาษาโกได้อีก หรือมุ่งหน้าต่อไปที่ [[javascript:click('.next-page')][บทต่อไป]].
