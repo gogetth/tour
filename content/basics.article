@@ -4,7 +4,7 @@
 The Go Authors
 https://golang.org
 
-* Packages
+* แพ็กเกจ
 
 ทุก ๆ โปรแกรมของภาษาโก จะถูกสร้างขึ้นจากแพ็กเกจต่าง ๆ
 
