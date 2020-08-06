@@ -4,7 +4,7 @@
     # The service account email which will be used for authentication.
     service_account_email: go-tour-th@appspot.gserviceaccount.com
     # The service account key which will be used for authentication.
-    service_account_key: ${{ secrets.6b049708d3a1a0d327ca2b8737cfcc8fbdc699d1 }}
+    service_account_key: ${{ secrets.tour }}
     # GAE project id
     project_id: go-tour-th
     # GAE variables to be written to the app.yaml file
