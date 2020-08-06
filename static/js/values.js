@@ -9,44 +9,44 @@ angular.module('tour.values', []).
 // List of modules with description and lessons in it.
 value('tableOfContents', [{
     'id': 'mechanics',
-    'title': 'Using the tour',
-    'description': '<p>Welcome to a tour of the <a href="https://golang.org">Go programming language</a>. The tour covers the most important features of the language, mainly:</p>',
+    'title': 'การใช้งานทัวร์',
+    'description': '<p>ยินดีต้อนรับเข้าสู่ทัวร์ของ <a href="https://golang.org">ภาษาโก</a> ทัวร์นี้ครอบคลุมฟีเจอร์ที่สำคัญของภาษา กล่าวคือ:</p>',
     'lessons': ['welcome']
 }, {
     'id': 'basics',
-    'title': 'Basics',
-    'description': '<p>The starting point, learn all the basics of the language.</p><p>Declaring variables, calling functions, and all the things you need to know before moving to the next lessons.</p>',
+    'title': 'พื้นฐาน',
+    'description': '<p>จุดเริ่มต้น เพื่อเรียนรู้พื้นฐานของภาษา</p><p>การประกาศตัวแปร การเรียกใช้ฟังก์ชั่น และทุก ๆ อย่างที่คุณจำเป็นต้องรู้ก่อนที่จะไปในบทเรียนถัดไป</p>',
     'lessons': ['basics', 'flowcontrol', 'moretypes']
 }, {
     'id': 'methods',
-    'title': 'Methods and interfaces',
-    'description': '<p>Learn how to define methods on types, how to declare interfaces, and how to put everything together.</p>',
+    'title': 'เมธอดและอินเตอร์เฟส',
+    'description': '<p>เรียนรู้ที่จะประกาศเมธอดสำหรับชนิดของตัวแปร การประกาศอินเตอร์เฟส และการใช้ทุกอย่างด้วยกัน</p>',
     'lessons': ['methods']
 }, {
     'id': 'concurrency',
     'title': 'Concurrency',
-    'description': '<p>Go provides concurrency features as part of the core language.</p><p>This module goes over goroutines and channels, and how they are used to implement different concurrency patterns.</p>',
+    'description': '<p>ภาษาโกมีความสามารถในการสร้าง concurrency เป็นส่วนหลักของภาษา</p><p>บทเรียนนี้จะพาไปรู้จัก goroutines และ channels และการใช้งานเพื่อสร้างแพทเทิร์นการทำงานแบบ concurrency ที่แตกต่างกัน</p>',
     'lessons': ['concurrency']
 }]).
 
 // translation
 value('translation', {
-    'off': 'off',
-    'on': 'on',
-    'syntax': 'Syntax-Highlighting',
-    'lineno': 'Line-Numbers',
-    'reset': 'Reset Slide',
-    'format': 'Format Source Code',
-    'kill': 'Kill Program',
-    'run': 'Run',
-    'compile': 'Compile and Run',
-    'more': 'Options',
-    'toc': 'Table of Contents',
-    'prev': 'Previous',
-    'next': 'Next',
-    'waiting': 'Waiting for remote server...',
-    'errcomm': 'Error communicating with remote server.',
-    'submit-feedback': 'Send feedback about this page',
+    'off': 'ปิด',
+    'on': 'เปิด',
+    'syntax': 'ใส่สีให้กับโครงสร้างภาษา',
+    'lineno': 'เลขบรรทัด',
+    'reset': 'เริ่มสไลด์ใหม่',
+    'format': 'จัดรูปแบบซอร์สโค้ด',
+    'kill': 'บังคับปิดโปรแกรม',
+    'run': 'รัน',
+    'compile': 'คอมไพล์และรัน',
+    'more': 'ตัวเลือก',
+    'toc': 'สารบัญ',
+    'prev': 'ก่อนหน้า',
+    'next': 'ถัดไป',
+    'waiting': 'กำลังรอเซิร์ฟเวอร์ปลายทาง...',
+    'errcomm': 'พบปัญหาในการติดต่อกับเซิร์ฟเวอร์ปลายทาง',
+    'submit-feedback': 'ส่งฟีดแบ็คเกี่ยวกับหน้านี้',
 
     // GitHub issue template: update repo and messaging when translating.
     'github-repo': 'github.com/golang/tour',
