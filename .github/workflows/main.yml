@@ -1,11 +1,18 @@
-- name: Publish app to Google App Engine
-  uses: zxyle/publish-gae-action@master
-  with:
-    # The service account email which will be used for authentication.
-    service_account_email: go-tour-th@appspot.gserviceaccount.com
-    # The service account key which will be used for authentication.
-    service_account_key: ${{ secrets.tour }}
-    # GAE project id
-    project_id: go-tour-th
-    # GAE variables to be written to the app.yaml file
-    gae_variables: # optional
+name: Test Actions
+
+on: [push]
+
+jobs:
+  build:
+    steps:
+      - name: Publish app to Google App Engine
+        uses: zxyle/publish-gae-action@master
+        with:
+          # The service account email which will be used for authentication.
+          service_account_email: go-tour-th@appspot.gserviceaccount.com
+          # The service account key which will be used for authentication.
+          service_account_key: ${{ secrets.tour }}
+          # GAE project id
+          project_id: go-tour-th
+          # GAE variables to be written to the app.yaml file
+          gae_variables: # optional
