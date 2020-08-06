@@ -7,14 +7,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Publish app to Google App Engine
+      - name: Initialize Google Cloud SDK
         uses: zxyle/publish-gae-action@master
         with:
-          # The service account email which will be used for authentication.
-          service_account_email: go-tour-th@appspot.gserviceaccount.com
-          # The service account key which will be used for authentication.
-          service_account_key: ${{ secrets.tour }}
-          # GAE project id
-          project_id: go-tour-th
-          # GAE variables to be written to the app.yaml file
-          gae_variables: # optional
+          service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          project_id: ${{ secrets.PROJECT_ID }}
+          # An optional variables parameter can be used
+          # gae_variables: ${{ secrets.GAE_VARIABLES }}
+
+      - name: Publish app to Google App Engine
+        run: |
+          # This client-secret.json is converted by GCP_SA_KEY.
+          gcloud auth activate-service-account ${{ secrets.GCP_SA_EMAIL }} --key-file=client-secret.json
+          gcloud config set project ${{ secrets.PROJECT_ID }}
+          gcloud -q app deploy app.yaml --promote
+          
+          # Suppose you need a cron task.
+          # gcloud -q app deploy cron.yaml
+      # - name: Publish app to Google App Engine
+      #   uses: zxyle/publish-gae-action@master
+      #   with:
+      #     # The service account email which will be used for authentication.
+      #     service_account_email: go-tour-th@appspot.gserviceaccount.com
+      #     # The service account key which will be used for authentication.
+      #     service_account_key: ${{ secrets.tour }}
+      #     # GAE project id
+      #     project_id: go-tour-th
+      #     # GAE variables to be written to the app.yaml file
+      #     gae_variables: # optional
