@@ -64,22 +64,19 @@ https://golang.org
 
 คลิกที่ปุ่ม [[javascript:highlightAndClick(".next-page")]["next"]] หรือกดปุ่ม `PageDown` บนคีย์บอร์ดเพื่อไปต่อ
 
-#appengine: * Go offline
+#appengine: * Go offline (เป็นอีกหนึ่งทางเลือก)
 #appengine: 
-#appengine: ถึงแม้ว่าจะไม่มีอินเตอร์เน็ต ก็ยังทัวร์ได้
+#appengine: โปรแกรมทัวร์นี้ยังสามารถทำงานด้วยตัวเองได้ เพื่อให้คุณใช้มันได้แม้ในขณะที่ไม่มีอินเตอร์เน็ต
+#appengine: ด้วยการ build และ run มันบนเครื่องของคุณได้เลย
 #appengine: 
-#appengine: และมันยังทำงานเร็วกว่าด้วย เพราะมันจะรันบนเครื่องของคุณเอง
+#appengine: ถ้าคุณต้องการ ก่อนอื่นคุณจะต้อง [[https://golang.org/doc/install][install Go]] ก่อน จากนั้นให้ run คำสั่ง:
 #appengine: 
-#appengine: หากคุณต้องการ
-#appengine: [[http://golang.org/dl/][ดาวน์โหลดและติดตั้งภาษาโก]]
-#appengine: จากนั้น เริ่มต้นทัวร์ด้วยคำสั่ง:
+#appengine: 	go get golang.org/x/tour
 #appengine: 
-#appengine: 	go tool tour
+#appengine: เสร็จแล้วมันสร้างตัวไบนารี่ของ `tour` ไว้ในไดเร็คทอรี่ `bin` ใน [[https://golang.org/doc/code.html#Workspaces][workspace]]
+#appengine: เมื่อคุณรันโปรแกรม tour มันจะไปเปิดเว็บบราวเซอร์แล้วแสดงโปรแกรมทัวร์เวอร์ชั่นบนเครื่องของคุณเอง
 #appengine: 
-#appengine: โปรแกรมทัวร์จะเปิดเบาวเซอร์ขึ้นมา
-#appengine: ทำงานจากเครื่องคุณเองโดยตรง
-#appengine: 
-#appengine: หรือแม้ว่า คุณยังอยากจะทัวร์ต่อไปกับเราบนนี้ก็ได้เช่นเดียวกัน
+#appengine: แน่นอนว่า คุณยังสามารถไปกับเราต่อบนเว็บไซด์นี้ได้เช่นกัน
 
 #appengine: * The Go Playground
 #appengine: 
